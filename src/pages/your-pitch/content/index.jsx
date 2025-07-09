@@ -1,10 +1,17 @@
+// /src/pages/your-pitch/edit/[id].jsx
+
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { FaBars, FaPlus, FaSave, FaTrash } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import Sidebar from "../../../components/Sidebar";
 
 export default function PitchEditor() {
+  const router = useRouter();
+  const { id } = router.query;
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [ideaName, setIdeaName] = useState("");
 
   return (
     <div className="min-h-screen bg-white text-gray-900 pb-24">
@@ -24,9 +31,9 @@ export default function PitchEditor() {
         <div className="flex justify-between items-center mb-2">
           <h2 className="font-bold text-lg flex items-center gap-2">
             <img src="/favicon.ico" alt="icon" className="w-4 h-4" />
-            Nama Ide Bisnis
+            Pitch ID: {id || <span className="italic text-gray-400">...loading</span>}
           </h2>
-          <FiExternalLink className="text-purple-600 text-xl cursor-pointer" />
+          <FiExternalLink className="text-purple-600 text-xl cursor-pointer hover:text-purple-800" />
         </div>
 
         {/* Tabs */}
@@ -36,7 +43,7 @@ export default function PitchEditor() {
         </div>
       </section>
 
-      {/* Background + Input */}
+      {/* Cover Section */}
       <section className="relative text-white">
         <img
           src="/postImg/jasa.jpg"
@@ -47,6 +54,8 @@ export default function PitchEditor() {
           <input
             type="text"
             placeholder="Type your idea name here..."
+            value={ideaName}
+            onChange={(e) => setIdeaName(e.target.value)}
             className="text-lg font-semibold bg-transparent border-none focus:outline-none placeholder-white"
           />
           <div className="flex items-center space-x-2 text-sm">
@@ -57,7 +66,7 @@ export default function PitchEditor() {
             />
             <span>Inventor username</span>
           </div>
-          <button className="bg-white text-black text-xs px-3 py-1 rounded-full w-max mt-1">
+          <button className="bg-white text-black text-xs px-3 py-1 rounded-full w-max mt-1 hover:bg-gray-200">
             + Add tag
           </button>
         </div>
@@ -83,12 +92,17 @@ export default function PitchEditor() {
       </section>
 
       {/* Bottom Buttons */}
-      <footer className="fixed bottom-0 w-full bg-white border-t p-3 flex justify-between gap-3">
-        <button className="bg-yellow-500 text-black flex-1 py-2 rounded font-semibold flex items-center justify-center gap-2 hover:bg-yellow-400">
+      <footer className="fixed bottom-0 w-full bg-white border-t p-3 flex justify-between gap-3 z-20">
+        <button
+          className="bg-yellow-500 text-black flex-1 py-2 rounded font-semibold flex items-center justify-center gap-2 hover:bg-yellow-400"
+          disabled={!id}
+        >
           <FaSave />
           SAVE
         </button>
-        <button className="bg-red-500 text-white flex-1 py-2 rounded font-semibold flex items-center justify-center gap-2 hover:bg-red-600">
+        <button
+          className="bg-red-500 text-white flex-1 py-2 rounded font-semibold flex items-center justify-center gap-2 hover:bg-red-600"
+        >
           <FaTrash />
           DISCARD
         </button>
