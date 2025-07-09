@@ -9,7 +9,7 @@ const login = () => {
         <Image src={'/images/logo.png'} width={150} height={150} />
       </div>
       <div className="bg-white rounded-2xl shadow-lg p-8 w-[90%] max-w-sm">
-        <LoginForm title={'Login'} desc={'Input your username and password to continue'}/>
+        <LoginForm title={'LOGIN'} desc={'Input your username and password to continue'}/>
 
         <p className="text-center text-sm text-gray-600 mt-6">
           Don’t Have Account?{" "}
