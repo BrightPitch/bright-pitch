@@ -1,3 +1,4 @@
+import BottomNav from "@/components/ui/BottomNav";
 import { FaRegEdit } from "react-icons/fa";
 import { FaHome, FaPlus, FaCompass } from "react-icons/fa";
 
@@ -101,20 +102,7 @@ export default function IdeaDetail() {
       </section>
 
       {/* Footer Nav */}
-      <footer className="fixed bottom-0 w-full bg-white border-t flex justify-around py-2 text-gray-700">
-        <button className="flex flex-col items-center">
-          <FaHome size={20} />
-          <span className="text-xs">Dashboard</span>
-        </button>
-        <button className="flex flex-col items-center">
-          <FaPlus size={20} />
-          <span className="text-xs">ADD POST</span>
-        </button>
-        <button className="flex flex-col items-center">
-          <FaCompass size={20} />
-          <span className="text-xs">Explore</span>
-        </button>
-      </footer>
+     <BottomNav/>
     </div>
   );
 }
