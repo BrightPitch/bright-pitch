@@ -1,19 +1,30 @@
-import { FaRegEdit } from "react-icons/fa";
-import { FaHome, FaPlus, FaCompass } from "react-icons/fa";
+import { useState } from "react";
+import { FaRegEdit, FaHome, FaPlus, FaCompass, FaBars } from "react-icons/fa";
+import Sidebar from "../../../components/Sidebar";
 
 export default function IdeaDetail() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-white text-gray-900 relative pb-24">
+      {/* Sidebar */}
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
       {/* Header */}
       <header className="bg-yellow-500 p-4 flex justify-between items-center">
         <h1 className="text-lg font-bold">Idea Detail</h1>
-        <button className="text-black text-2xl">&#9776;</button>
+        <button
+          onClick={() => setSidebarOpen(true)}
+          className="text-black text-2xl"
+        >
+          <FaBars />
+        </button>
       </header>
 
-      {/* Cover */}
+      {/* Cover Section */}
       <div className="relative">
         <img
-          src="/background.jpg"
+          src="postImg/jasa.jpg"
           alt="Background"
           className="w-full h-40 object-cover"
         />
@@ -43,7 +54,7 @@ export default function IdeaDetail() {
         <h3 className="text-lg font-semibold mb-2">Pitch video</h3>
         <div className="w-full aspect-video bg-black rounded-lg overflow-hidden relative">
           <img
-            src="/video-thumbnail.jpg"
+            src="/postImg/Shooting Range.jpg"
             alt="Video thumbnail"
             className="w-full h-full object-cover opacity-80"
           />
@@ -70,11 +81,10 @@ export default function IdeaDetail() {
           dipresentasikan. Di sini, inventor dapat memaparkan penjelasan atas
           permasalahan apa yang hendak ia selesaikan lewat ide yang. Inventor
           disarankan juga melampirkan data berupa link.
-          <sup>[1]</sup>
         </p>
         <p className="text-sm text-gray-700 mb-4">
           Inventor akan diberi pilihan untuk membuat pitching post secara
-          manual atau cukup upload file PDF.<sup>[2]</sup>
+          manual atau cukup upload file PDF.
         </p>
 
         <h4 className="font-medium mb-1">Referensi:</h4>
@@ -101,7 +111,7 @@ export default function IdeaDetail() {
       </section>
 
       {/* Footer Nav */}
-      <footer className="fixed bottom-0 w-full bg-white border-t flex justify-around py-2 text-gray-700">
+      <footer className="fixed bottom-0 w-full bg-white border-t flex justify-around py-2 text-gray-700 z-10">
         <button className="flex flex-col items-center">
           <FaHome size={20} />
           <span className="text-xs">Dashboard</span>
