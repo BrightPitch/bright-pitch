@@ -1,29 +1,28 @@
 import BottomNav from "@/components/ui/BottomNav";
 import { FaRegEdit } from "react-icons/fa";
 import { FaHome, FaPlus, FaCompass } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import Header from "@/components/Header";
+import NavigationPanel from "@/components/ui/NavigationPanel";
 
 export default function IdeaDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <div className="min-h-screen bg-white text-gray-900 relative pb-24">
       {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-
-      {/* Header */}
-      <header className="bg-yellow-500 p-4 flex justify-between items-center">
-        <h1 className="text-lg font-bold">
-          Idea Detail {id ? `#${id}` : <span className="italic text-gray-700">...loading</span>}
-        </h1>
-        <button
-          onClick={() => setSidebarOpen(true)}
-          className="text-black text-2xl"
-        >
-          <FaBars />
-        </button>
-      </header>
+      <Header title={"Explore Ideas"} toggleSidebar={() => setShowSidebar(true)}></Header>
+      
+            {/* List of Ideas */}
+            {
+              showSidebar 
+              ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
+              : null 
+            }
 
       {/* Cover Section */}
       <div className="relative">

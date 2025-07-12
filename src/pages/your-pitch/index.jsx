@@ -8,7 +8,8 @@ import {
 } from "react-icons/fa";
 import { MdUpdate, MdOutlineUnpublished } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import Sidebar from "../../components/Sidebar";
+import Header from "@/components/Header";
+import NavigationPanel from "@/components/ui/NavigationPanel";
 
 export default function MyPitches() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -17,16 +18,12 @@ export default function MyPitches() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 relative pb-24">
-      {/* Sidebar */}
-      <Sidebar isOpen={showSidebar} onClose={() => setShowSidebar(false)} />
-
-      {/* Header */}
-      <header className="bg-yellow-500 p-4 flex justify-between items-center">
-        <h1 className="text-lg font-bold">My Pitches</h1>
-        <button onClick={() => setShowSidebar(true)}>
-          <FaBars size={20} />
-        </button>
-      </header>
+      <Header title={"Manage Pitch"} toggleSidebar={() => setShowSidebar(true)}></Header>
+      {
+        showSidebar 
+        ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
+        : null 
+      }
 
       {/* Filter + Sort */}
       <div className="p-3 flex items-center gap-2 border-b">

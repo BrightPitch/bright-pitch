@@ -53,7 +53,6 @@ const LoginForm = () => {
           placeholder="Enter your registered email"
         />
       </div>
-
       <div>
         <label className="block text-sm font-bold text-gray-700 mb-1">
           PASSWORD

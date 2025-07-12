@@ -4,27 +4,26 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { FaBars, FaPlus, FaSave, FaTrash } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
-import Sidebar from "../../../components/Sidebar";
+import Header from "@/components/Header";
+import NavigationPanel from "@/components/ui/NavigationPanel";
 
 export default function PitchEditor() {
   const router = useRouter();
   const { id } = router.query;
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [ideaName, setIdeaName] = useState("");
 
   return (
     <div className="min-h-screen bg-white text-gray-900 pb-24">
       {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-
-      {/* Header */}
-      <header className="bg-yellow-500 p-4 flex justify-between items-center border-b border-yellow-700">
-        <h1 className="text-lg font-bold">Edit Content</h1>
-        <button className="text-black text-2xl" onClick={() => setSidebarOpen(true)}>
-          <FaBars />
-        </button>
-      </header>
+                        <Header title={"Edit Pitch"} toggleSidebar={() => setShowSidebar(true)}></Header>
+                        
+                              {/* List of Ideas */}
+                              {
+                                showSidebar 
+                                ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
+                                : null 
+                              }
 
       {/* Title Section */}
       <section className="p-4 border-b">

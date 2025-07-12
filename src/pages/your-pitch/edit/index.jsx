@@ -5,7 +5,8 @@ import { useState } from "react";
 import { FaBars, FaSave, FaTrash } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
-import Sidebar from "../../../components/Sidebar";
+import Header from "@/components/Header";
+import NavigationPanel from "@/components/ui/NavigationPanel";
 
 export default function PitchEditorEdit() {
   const router = useRouter();
@@ -18,18 +19,19 @@ export default function PitchEditorEdit() {
   const [solutionType, setSolutionType] = useState("Text");
   const [solutionContent, setSolutionContent] = useState("The content goes here...");
 
+  const [showSidebar, setShowSidebar] = useState(false);
+
   return (
     <div className="min-h-screen bg-white text-gray-900 pb-24">
       {/* Sidebar */}
-      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-
-      {/* Header */}
-      <header className="bg-yellow-500 p-4 flex justify-between items-center border-b border-yellow-700">
-        <h1 className="text-lg font-bold">Edit Post: {id || "Loading..."}</h1>
-        <button className="text-black text-2xl" onClick={() => setSidebarOpen(true)}>
-          <FaBars />
-        </button>
-      </header>
+            <Header title={"Edit Pitch"} toggleSidebar={() => setShowSidebar(true)}></Header>
+            
+                  {/* List of Ideas */}
+                  {
+                    showSidebar 
+                    ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
+                    : null 
+                  }
 
       {/* Title */}
       <section className="p-4 border-b">
