@@ -1,13 +1,6 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-import {
-  FaRegEdit,
-  FaHome,
-  FaPlus,
-  FaCompass,
-  FaBars,
-} from "react-icons/fa";
-import Sidebar from "../../../components/Sidebar";
+import BottomNav from "@/components/ui/BottomNav";
+import { FaRegEdit } from "react-icons/fa";
+import { FaHome, FaPlus, FaCompass } from "react-icons/fa";
 
 export default function IdeaDetail() {
   const router = useRouter();
@@ -125,21 +118,8 @@ export default function IdeaDetail() {
         </ol>
       </section>
 
-      {/* Footer Navigation */}
-      <footer className="fixed bottom-0 w-full bg-white border-t flex justify-around py-2 text-gray-700 z-10">
-        <button className="flex flex-col items-center hover:text-black">
-          <FaHome size={20} />
-          <span className="text-xs">Dashboard</span>
-        </button>
-        <button className="flex flex-col items-center hover:text-black">
-          <FaPlus size={20} />
-          <span className="text-xs">Add Post</span>
-        </button>
-        <button className="flex flex-col items-center hover:text-black">
-          <FaCompass size={20} />
-          <span className="text-xs">Explore</span>
-        </button>
-      </footer>
+      {/* Footer Nav */}
+     <BottomNav/>
     </div>
   );
 }
