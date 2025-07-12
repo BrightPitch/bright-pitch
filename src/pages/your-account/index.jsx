@@ -5,9 +5,13 @@ import AccountHeader from "@/components/AccountHeader"
 import { useEffect, useState } from "react"
 import supabase from "@/lib/db"
 
+
+
 export default function YourProfilePage() {
 
     const [userProfile, setUserProfile] = useState()
+    const [userInterests, setUserInterests] = useState([])
+    const [userRoles, setUserRoles] = useState([])
 
     useEffect(() => {        
         const fetchUserProfile = async () => {
@@ -21,17 +25,33 @@ export default function YourProfilePage() {
                 return
             }
 
-            const { data: profile, error } = await supabase
+            const { data: profile, error_profile } = await supabase
                 .from('user_profiles')
                 .select('*')
                 .eq('id', session.user.id) // or `user_id`, depending on your schema
                 .single()
 
-            if (error) {
-                console.error('Error fetching profile:', error)
+            const { data: interests, error_area } = await supabase
+                .from('user_area_of_interests')
+                .select('*')
+                .eq('id', session.user.id)
+
+            const { data: roles, error_role } = await supabase
+                .from('user_roles')
+                .select('*')
+                .eq('user_id', session.user.id)
+            
+            console.log(roles)
+
+
+            if (error_profile || error_area || error_role) {
+                console.error('Error fetching profile:', error_profile)
+                console.error('Error fetching area:', error_area)
+                console.error('Error fetching role:', error_role)
             } else {
                 setUserProfile(profile)
-                console.log(profile)
+                setUserInterests(interests)
+                setUserRoles(roles)
             }
         }
 
@@ -46,7 +66,11 @@ export default function YourProfilePage() {
                     <div className="flex flex-col items-center w-[196px] mb-8 mx-auto">
                         <div className="rounded-full bg-gray-400 w-[96px] h-[96px]"></div>
                         <p className="font-semibold text-lg my-2">{userProfile?.username}</p>
-                        <p className="text-gray-500 text-sm">Investor, Inventor, Mentor</p>
+                        <p className="text-gray-500 text-sm">
+                            {
+                                userRoles?.map(record => record.role + " ")
+                            }
+                        </p>
                         <p className="text-gray-500 text-sm">{userProfile?.city + ', ' + userProfile?.country}</p>
                     </div>
 
@@ -57,15 +81,14 @@ export default function YourProfilePage() {
                     <section className="mb-8">
                         <h2 className="text-lg font-bold mb-2">Industry Focus</h2>
                         <div className="flex flex-wrap gap-2">
-                            <div className="bg-gray-400 py-1 px-4 text-center rounded-xl">
-                                Sustainable Tech
-                            </div>
-                            <div className="bg-gray-400 py-1 px-4 text-center rounded-xl">
-                                Consumption
-                            </div>
-                            <div className="bg-gray-400 py-1 px-4 text-center rounded-xl">
-                                Renewable Energy
-                            </div>
+                            {
+                                userInterests?.map(record => 
+                                    <div className="bg-gray-400 py-1 px-4 text-center rounded-xl">
+                                        {record.area}
+                                    </div>
+                                )
+                            }
+                            
                         </div>
                     </section>
                     {/* <section className="mb-8">
@@ -97,11 +120,11 @@ export default function YourProfilePage() {
                         <div className="flex flex-col gap-y-4">
                             <div className="flex gap-x-4 items-center">
                                 <FontAwesomeIcon className="text-xl" icon={faEnvelope} />
-                                <p>ethan.carter@email.com</p>
+                                <p>{userProfile?.email}</p>
                             </div>
                             <div className="flex gap-x-4 items-center">
                                 <FontAwesomeIcon className="text-xl" icon={faPhone} />
-                                <p>+62 454-6565-6765</p>
+                                <p>{userProfile?.phone_number}</p>
                             </div>
                         </div>
                     </section>
