@@ -8,22 +8,16 @@ import {
 } from "react-icons/fa";
 import { MdUpdate, MdOutlineUnpublished } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import Header from "@/components/Header";
-import NavigationPanel from "@/components/ui/NavigationPanel";
+import Header from "@/components/layout/Header";
 
 export default function MyPitches() {
-  const [showSidebar, setShowSidebar] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
 
   return (
     <div className="min-h-screen bg-white text-gray-900 relative pb-24">
-      <Header title={"Manage Pitch"} toggleSidebar={() => setShowSidebar(true)}></Header>
-      {
-        showSidebar 
-        ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
-        : null 
-      }
+      <Header title={"Explore Ideas"}></Header>
+      
 
       {/* Filter + Sort */}
       <div className="p-3 flex items-center gap-2 border-b">
@@ -130,7 +124,7 @@ function PitchCard({ id, status }) {
         >
           {status === "published" ? "Published" : "On draft"}
         </span>
-        <Link href={`/your-pitch/detail/${id}`} passHref>
+        <Link href={`/me/pitches/detail/${id}`} passHref>
           <FaExternalLinkAlt className="text-purple-600 cursor-pointer hover:scale-110 transition" />
         </Link>
       </div>

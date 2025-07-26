@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/ui/Header";
+import Header from "@/components/layout/Header";
 import { useCourseById } from "@/hooks/useCourse";
 import { useRouter } from "next/router";
 import Image from "next/image";

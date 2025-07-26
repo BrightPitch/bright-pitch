@@ -1,9 +1,7 @@
-import IdeaCard from "@/components/explore/IdeaCard";
-import BottomNav from "@/components/ui/BottomNav";
-import NavigationPanel from "@/components/ui/NavigationPanel";
+import IdeaCard from "@/components/pitch/IdeaCard";
+import BottomNav from "@/components/layout/BottomNav";
 import { Filter } from "lucide-react";
-import { useState } from "react";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
 
 const index = () => {
   const ideas = [
@@ -15,18 +13,10 @@ const index = () => {
     },
   ];
 
-  const [showSidebar, setShowSidebar] = useState(false)
-
   return (
     <div className="min-h-screen pb-20 bg-gray-50">
-      <Header title={"Explore Ideas"} toggleSidebar={() => setShowSidebar(true)}></Header>
-
+      <Header title={"Explore Ideas"}></Header>
       {/* List of Ideas */}
-      {
-        showSidebar 
-        ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
-        : null 
-      }
 
       <div className="relative z-10 p-4">
         <div className=" relative flex justify-center items-center gap-2 mb-4">

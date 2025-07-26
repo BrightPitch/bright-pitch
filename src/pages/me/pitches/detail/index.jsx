@@ -1,29 +1,16 @@
-import BottomNav from "@/components/ui/BottomNav";
+import BottomNav from "@/components/layout/BottomNav";
 import { FaRegEdit } from "react-icons/fa";
-import { FaHome, FaPlus, FaCompass } from "react-icons/fa";
-import { FaBars } from "react-icons/fa";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import Header from "@/components/Header";
-import NavigationPanel from "@/components/ui/NavigationPanel";
+import Header from "@/components/layout/Header";
 
 export default function IdeaDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <div className="min-h-screen bg-white text-gray-900 relative pb-24">
-      {/* Sidebar */}
-      <Header title={"Explore Ideas"} toggleSidebar={() => setShowSidebar(true)}></Header>
+      <Header title={"Explore Ideas"}></Header>
       
-            {/* List of Ideas */}
-            {
-              showSidebar 
-              ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
-              : null 
-            }
-
       {/* Cover Section */}
       <div className="relative">
         <img

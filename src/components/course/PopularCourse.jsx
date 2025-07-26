@@ -19,7 +19,7 @@ export default function PopularCourse() {
       ) : (
         <div className="grid grid-cols-2 gap-4">
           {courses.map((item, i) => (
-            <Link href={`/courseList/${item.id}`} key={i}>
+            <Link href={`/courses/${item.id}`} key={i}>
               <div
                 key={i}
                 className="relative rounded-xl overflow-hidden shadow-lg">

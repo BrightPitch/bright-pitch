@@ -18,7 +18,7 @@ export default function SuggestedCourse() {
       ) : (
         <div className="grid grid-cols-2 gap-4">
           {courses.map((course, i) => (
-            <Link href={`/courseList/${course.id}`} key={i}>
+            <Link href={`/courses/${course.id}`} key={i}>
               <div
                 key={i}
                 className="relative rounded-xl overflow-hidden shadow-md">

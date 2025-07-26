@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons"
-import AccountHeader from "@/components/AccountHeader"
+import AccountHeader from "@/components/layout/AccountHeader"
 
 export default function YourProfileEditPage() {
 

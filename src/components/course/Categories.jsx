@@ -19,7 +19,7 @@ export default function Categories() {
       ) : (
         <div className="flex gap-4 overflow-x-auto">
           {categories.map((cat, i) => (
-            <Link href={`/courseList/${cat.id}`} key={i}>
+            <Link href={`/courses/${cat.id}`} key={i}>
               <div key={i} className="flex-shrink-0 w-20 text-center">
                 <Image
                   src={cat.image}

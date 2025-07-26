@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
 import { faStar } from "@fortawesome/free-regular-svg-icons"
 import { useState, useEffect } from "react"
-import AccountHeader from "@/components/AccountHeader"
+import AccountHeader from "@/components/layout/AccountHeader"
 import supabase from "@/lib/db"
 
 const benefits = {
