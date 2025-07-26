@@ -8,9 +8,8 @@ import Header from "@/components/layout/Header";
 const index = () => {
 
   return (
-    <div className="bg-white min-h-screen text-gray-900">
+    <div className="min-h-screen">
       <Header title={"Explore Ideas"}></Header>
-      
       <SearchBar />
       <SuggestedCourse />
       <PopularCourse />

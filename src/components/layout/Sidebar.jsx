@@ -19,7 +19,7 @@ export default function Sidebar({ isOpen, onClose }) {
         {/* Header */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold">Menu</h2>
-          <button onClick={onClose} aria-label="Close Sidebar">
+          <button className="bg-background" onClick={onClose} aria-label="Close Sidebar">
             <IoClose size={24} />
           </button>
         </div>
@@ -33,7 +33,7 @@ export default function Sidebar({ isOpen, onClose }) {
             Profile
           </Link>
 
-          <h3 className="font-bold text-sm mt-6 text-gray-500 uppercase">BrightPitch - Stage</h3>
+          <h3 className="font-bold text-sm mt-6 uppercase">BrightPitch - Stage</h3>
           <Link href="/me/pitches" className="block hover:underline">
             Manage Pitches
           </Link>
@@ -41,7 +41,7 @@ export default function Sidebar({ isOpen, onClose }) {
             Bookmarks
           </Link>
 
-          <h3 className="font-bold text-sm mt-6 text-gray-500 uppercase">BrightPitch - Academy</h3>
+          <h3 className="font-bold text-sm mt-6 uppercase">BrightPitch - Academy</h3>
           <Link href="/courses" className="block hover:underline">
             Courses
           </Link>

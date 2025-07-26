@@ -9,7 +9,7 @@ export default function SuggestedCourse() {
 
   return (
     <div className="p-4">
-      <h2 className="font-semibold text-md mb-3 text-blue-900">
+      <h2 className="font-semibold mb-3">
         Suggested for you
       </h2>
 

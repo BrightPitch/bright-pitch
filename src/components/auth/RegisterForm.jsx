@@ -73,53 +73,49 @@ export default function RegisterForm() {
     return (
         <form onSubmit={handleEmailPasswordRegister} className="space-y-6">
             <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">USERNAME</label>
+                <label className="block text-sm font-bold mt-0">USERNAME</label>
                 <input
                     type="text"
                     name="username"
-                    required
-                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
                     placeholder="Enter your username"
+                    required
                 />
             </div>
 
             <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">EMAIL</label>
+                <label className="block text-sm font-bold">EMAIL</label>
                 <input
                     type="email"
                     name="email"
-                    required
-                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
                     placeholder="Enter your email"
+                    required
                 />
             </div>
 
             <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">PASSWORD</label>
+                <label className="block text-sm font-bold">PASSWORD</label>
                 <input
                     type="password"
                     name="password"
-                    required
-                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
                     placeholder="Enter your password"
+                    required
                 />
             </div>
 
             <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1">CONFIRM PASSWORD</label>
+                <label className="block text-sm font-bold">CONFIRM PASSWORD</label>
                 <input
                     type="password"
                     name="confirmPassword"
-                    required
-                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
                     placeholder="Retype your password"
+                    required
                 />
             </div>
 
             <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 rounded my-0"
+                className="w-full bg-primary font-bold py-2 rounded my-0"
             >
                 {loading ? 'Registering...' : 'Register'}
             </button>

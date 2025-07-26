@@ -67,19 +67,19 @@ export default function YourMembershipPage() {
             <AccountHeader title="Edit Membership Status"></AccountHeader>
             <main className="w-[90%] max-w-[720px] mx-auto mb-24 p-4">
                     <div className="flex flex-col items-center w-[196px] mb-8 mx-auto">
-                        <div className="rounded-full bg-gray-400 w-[96px] h-[96px]"></div>
+                        <div className="rounded-full bg-gray-400 w-24 h-24"></div>
                         <p className="font-semibold text-lg my-2">{userProfile?.username}</p>
-                        <p className="text-gray-500 text-sm">
+                        <p className="text-sm">
                             {
                                 userRoles?.map(record => record.role + " ")
                             }
                         </p>
-                        <p className="text-gray-500 text-sm">{userProfile?.city + ', ' + userProfile?.country}</p>
+                        <p className="text-sm">{userProfile?.city + ', ' + userProfile?.country}</p>
                     </div>
                     <section className="mb-12">
-                        <h2 className="font-semibold text-2xl mb-4">Current Plan</h2>
+                        <h2 className="font-semibold  mb-4">Current Plan</h2>
                         <div className="flex items-center gap-x-6">
-                            <div className="flex justify-center items-center bg-secondary p-4 rounded-lg w-[48px] h-[48px]">
+                            <div className="flex justify-center items-center bg-secondary p-4 rounded-lg w-12 h-12">
                                 <FontAwesomeIcon icon={faStar} className="text-xl" />
                             </div>
                             <div className="flex flex-col gap-y-2">
@@ -89,8 +89,7 @@ export default function YourMembershipPage() {
                         </div>
                     </section>
                     <section className="mb-12">
-                        <h2 className="font-semibold text-2xl mb-4">Benefits</h2>
-
+                        <h2 className="font-semibold mb-4">Benefits</h2>
                         {
                             (plan === 'premium') ? 
                             benefits['premium'].map(benefit => 
@@ -125,7 +124,7 @@ export default function YourMembershipPage() {
                         </div>
                     </section>
                     <section>
-                        <h2 className="font-semibold text-2xl mb-4">Manage Membership</h2>
+                        <h2 className="font-semibold  mb-4">Manage Membership</h2>
                         <button onClick={() => setPlan(plan === 'premium' ? 'basic' : 'premium')}>
                             {
                                 plan === 'premium' ?

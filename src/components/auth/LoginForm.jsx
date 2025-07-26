@@ -42,33 +42,31 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleEmailPasswordLogin} className="space-y-6">
       <div>
-        <label className="block text-sm font-bold text-gray-700 mb-1">
+        <label className="block text-sm font-bold mt-0">
           EMAIL
         </label>
         <input
           name="email"
           type="email"
-          required
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
           placeholder="Enter your registered email"
+          required
         />
       </div>
       <div>
-        <label className="block text-sm font-bold text-gray-700 mb-1">
+        <label className="block text-sm font-bold">
           PASSWORD
         </label>
         <input
           name="password"
           type="password"
-          required
-          className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
           placeholder="Enter your password"
+          required
         />
       </div>
 
       <button
         type="submit"
-        className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 rounded mb-0">
+        className="w-full bg-primary hover:bg-primary font-bold py-2 rounded mb-0">
         Login
       </button>
 

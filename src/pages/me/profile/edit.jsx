@@ -49,7 +49,7 @@ export default function YourProfileEditPage() {
                         <input type="tel" name="phone" id="phone" />
                     </form>
             </main>
-            <footer className=" flex bg-background justify-between w-[90%] max-w-[720px] mx-auto h-[80px] fixed bottom-0 left-1/2 -translate-x-1/2 items-center">
+            <footer className=" flex bg-background justify-between w-full px-4 max-w-[720px] mx-auto h-[80px] fixed bottom-0 left-1/2 -translate-x-1/2 items-center border-t-2">
                 <button className="bg-secondary rounded-full min-w-[120px] p-3">Cancel</button>
                 <button type="submit" form="profile-detail" className="bg-primary rounded-full min-w-[120px] p-3">Save</button>
             </footer>
