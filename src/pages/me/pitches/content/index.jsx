@@ -4,27 +4,16 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { FaBars, FaPlus, FaSave, FaTrash } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
-import Header from "@/components/Header";
-import NavigationPanel from "@/components/ui/NavigationPanel";
+import Header from "@/components/layout/Header";
 
 export default function PitchEditor() {
   const router = useRouter();
   const { id } = router.query;
-  const [showSidebar, setShowSidebar] = useState(false);
   const [ideaName, setIdeaName] = useState("");
 
   return (
     <div className="min-h-screen bg-white text-gray-900 pb-24">
-      {/* Sidebar */}
-                        <Header title={"Edit Pitch"} toggleSidebar={() => setShowSidebar(true)}></Header>
-                        
-                              {/* List of Ideas */}
-                              {
-                                showSidebar 
-                                ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
-                                : null 
-                              }
-
+      <Header title={"Explore Ideas"}></Header>
       {/* Title Section */}
       <section className="p-4 border-b">
         <div className="flex justify-between items-center mb-2">

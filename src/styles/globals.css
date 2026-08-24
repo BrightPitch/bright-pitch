@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *)); */
 
 :root {
-  --background: #FDFDFD;
+  --background: #fdfdfd;
   --foreground: #1F2937;
   --radius: 0.625rem;
   --card: oklch(1 0 0);
@@ -17,8 +17,8 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: #5205EE;
-  --accent-foreground: #FFFFFF;
+  --accent: #9105ee;
+  --accent-foreground: #FDFDFD;
   --destructive: #FF4848;
   --border: oklch(82.968% 0.00009 271.152);
   --input: oklch(0.922 0 0);
@@ -131,19 +131,24 @@ body {
     @apply border-border outline-ring/50;
   }
   
+  *:focus {
+    @apply outline-none border-accent ring-2 ring-accent;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
 
-  *:focus {
-    @apply border-purple-600 ring-1 ring-purple-600 outline-none;
+  .bg-accent {
+    @apply text-accent-foreground
   }
 
   input[type="text"],
   input[type="email"],
   input[type="tel"],
+  input[type="password"],
   textarea {
-    @apply border-2 rounded-sm p-2
+    @apply w-full border bg-white rounded-sm px-3 py-2 focus:border-accent focus:ring-2
   }
 
   input[type="checkbox"],
@@ -153,10 +158,28 @@ body {
 
   input[type="checkbox"]:checked,
   input[type="radio"]:checked {
-    @apply accent-accent ring-2 ring-purple-600 border-purple-600;
+    @apply accent-accent ring-2 ring-accent border-accent;
   }
 
   label {
     @apply mb-3 mt-6
+  }
+
+  button {
+    @apply flex justify-center items-center p-2 active:brightness-90
+  }
+
+  p,
+  a,
+  span {
+    @apply text-sm
+  }
+
+  h1 {
+    @apply text-xl
+  }
+
+  h2 {
+    @apply text-lg
   }
 }

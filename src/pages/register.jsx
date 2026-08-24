@@ -1,4 +1,4 @@
-import {RegisterForm} from '@/components/AuthForm';
+import RegisterForm from '@/components/auth/RegisterForm';
 import Image from 'next/image';
 import React from 'react'
 

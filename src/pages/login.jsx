@@ -1,4 +1,4 @@
-import {LoginForm} from '@/components/AuthForm';
+import LoginForm from '@/components/auth/LoginForm.jsx';
 import Image from 'next/image';
 import React from 'react'
 

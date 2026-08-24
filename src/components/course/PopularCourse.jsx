@@ -10,8 +10,8 @@ export default function PopularCourse() {
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-3">
-        <h2 className="font-semibold text-md text-blue-900">Popular</h2>
-        <span className="text-sm text-red-500">View all</span>
+        <h2 className="font-semibold">Popular</h2>
+        <span className="text-sm text-accent font-semibold">View all</span>
       </div>
 
       {loading ? (
@@ -19,7 +19,7 @@ export default function PopularCourse() {
       ) : (
         <div className="grid grid-cols-2 gap-4">
           {courses.map((item, i) => (
-            <Link href={`/courseList/${item.id}`} key={i}>
+            <Link href={`/courses/${item.id}`} key={i}>
               <div
                 key={i}
                 className="relative rounded-xl overflow-hidden shadow-lg">

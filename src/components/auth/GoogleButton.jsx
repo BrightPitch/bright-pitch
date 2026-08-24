@@ -6,7 +6,7 @@ const GoogleButton = ({title, onClick}) => {
     <button
       onClick={onClick}
       type="button"
-      className="w-full flex items-center justify-center gap-2 border border-yellow-500 py-2 rounded hover:bg-gray-100">
+      className="w-full flex items-center justify-center gap-2 border border-yellow-500 bg-background py-2 rounded">
       <FcGoogle className='text-2xl' />
       Continue with {title}
     </button>

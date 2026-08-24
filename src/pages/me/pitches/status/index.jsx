@@ -7,8 +7,8 @@ import {
 } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
-import Header from "@/components/Header";
-import NavigationPanel from "@/components/ui/NavigationPanel";
+import Header from "@/components/layout/Header";
+import NavigationPanel from "@/components/layout/NavigationPanel";
 
 export default function PitchEditorStatus() {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -19,16 +19,7 @@ export default function PitchEditorStatus() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900 pb-24 relative">
-      {/* Sidebar */}
-                  <Header title={"Edit Pitch"} toggleSidebar={() => setShowSidebar(true)}></Header>
-                  
-                        {/* List of Ideas */}
-                        {
-                          showSidebar 
-                          ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
-                          : null 
-                        }
-
+      <Header title={"Explore Ideas"}></Header>
       {/* Title & Tabs */}
       <section className="p-4 border-b">
         <div className="flex justify-between items-center mb-2">

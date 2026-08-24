@@ -10,8 +10,8 @@ export default function Categories() {
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-3">
-        <h2 className="font-semibold text-md text-blue-900">Categories</h2>
-        <span className="text-sm text-red-500">View all</span>
+        <h2 className="font-semibold">Categories</h2>
+        <span className="text-sm text-accent font-semibold">View all</span>
       </div>
 
       {loading ? (
@@ -19,7 +19,7 @@ export default function Categories() {
       ) : (
         <div className="flex gap-4 overflow-x-auto">
           {categories.map((cat, i) => (
-            <Link href={`/courseList/${cat.id}`} key={i}>
+            <Link href={`/courses/${cat.id}`} key={i}>
               <div key={i} className="flex-shrink-0 w-20 text-center">
                 <Image
                   src={cat.image}

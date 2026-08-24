@@ -5,38 +5,35 @@ import {
   FaFilter,
   FaPlus,
   FaExternalLinkAlt,
+  FaSort,
 } from "react-icons/fa";
 import { MdUpdate, MdOutlineUnpublished } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import Header from "@/components/Header";
-import NavigationPanel from "@/components/ui/NavigationPanel";
+import Header from "@/components/layout/Header";
+import { Filter } from "lucide-react";
+
 
 export default function MyPitches() {
-  const [showSidebar, setShowSidebar] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 relative pb-24">
-      <Header title={"Manage Pitch"} toggleSidebar={() => setShowSidebar(true)}></Header>
-      {
-        showSidebar 
-        ? <NavigationPanel closeAction={() => setShowSidebar(false)} />
-        : null 
-      }
+    <div className="min-h-screen relative pb-24">
+      <Header title={"Explore Ideas"}></Header>
 
       {/* Filter + Sort */}
-      <div className="p-3 flex items-center gap-2 border-b">
-        <button
-          className="flex items-center border rounded px-3 py-2 gap-2 w-full"
-          onClick={() => setShowFilter(true)}
-        >
-          <FaFilter />
-          Filter by...
-        </button>
-        <button onClick={() => setShowSort(true)} className="text-xl">
-          <FaBars className="rotate-90" />
-        </button>
+      <div className="p-3 pt-6 flex items-center gap-2">
+        <div className="w-full flex justify-around items-center gap-2">
+          <Filter size={32} />
+          <input
+            type="text"
+            className="w-full"
+            placeholder="Search pitches"
+          />
+          <button onClick={() => setShowSort(true)} className="text-xl">
+            <FaSort />
+          </button>
+        </div>        
       </div>
 
       {/* Pitch List */}
@@ -82,8 +79,8 @@ export default function MyPitches() {
               <RadioOption name="sort" label="Created time" />
             </div>
             <div className="flex gap-3">
-              <button className="bg-yellow-400 px-4 py-2 rounded">Apply</button>
-              <button className="border px-4 py-2 rounded text-purple-600">Clear</button>
+              <button className="bg-primary px-4 py-2 rounded">Apply</button>
+              <button className="border px-4 py-2 rounded text-accent">Clear</button>
             </div>
           </div>
         </Overlay>
@@ -119,8 +116,8 @@ export default function MyPitches() {
 // Pitch card
 function PitchCard({ id, status }) {
   return (
-    <div className="border p-4 rounded-lg shadow-sm">
-      <div className="flex justify-between items-center mb-2">
+    <div className="border p-4 rounded-lg shadow-sm bg-white">
+      <div className="flex justify-between items-center mb-4">
         <span
           className={`text-xs px-3 py-1 rounded-full font-semibold ${
             status === "published"
@@ -130,16 +127,16 @@ function PitchCard({ id, status }) {
         >
           {status === "published" ? "Published" : "On draft"}
         </span>
-        <Link href={`/your-pitch/detail/${id}`} passHref>
-          <FaExternalLinkAlt className="text-purple-600 cursor-pointer hover:scale-110 transition" />
+        <Link href={`/me/pitches/detail/${id}`} passHref>
+          <FaExternalLinkAlt className="text-accent cursor-pointer hover:scale-110 transition" />
         </Link>
       </div>
-      <h3 className="font-bold text-md mb-1">Nama Ide Bisnis</h3>
+      <h3 className="font-bold text-md mb-2">Nama Ide Bisnis</h3>
       <div className="flex gap-2 mb-2 flex-wrap">
-        <span className="bg-gray-200 text-sm px-2 py-1 rounded-full"># Food and beverage</span>
-        <span className="bg-gray-200 text-sm px-2 py-1 rounded-full"># Ongoing</span>
+        <span className="bg-secondary px-2 py-1 text-xs rounded-full"># Food and beverage</span>
+        <span className="bg-secondary px-2 py-1 text-xs rounded-full"># Ongoing</span>
       </div>
-      <p className="text-sm text-gray-600 mb-2">
+      <p className="my-4">
         Deskripsi singkat mengenai ide bisnis yang dipitch...
       </p>
       <div className="flex gap-2 flex-wrap">
@@ -152,7 +149,7 @@ function PitchCard({ id, status }) {
         </button>
         {status === "published" && (
           <button
-            className="border border-red-400 text-red-500 px-3 py-1 rounded flex items-center gap-1 text-sm"
+            className="border border-destructive text-destructive px-3 py-1 rounded gap-1 text-sm"
             onClick={() => alert("Unpublish pitch")}
           >
             <MdOutlineUnpublished />
@@ -170,11 +167,6 @@ function Overlay({ children, onClose }) {
   return (
     <div className="fixed inset-0 bg-black/40 z-50">
       <div className="absolute inset-0 overflow-auto">{children}</div>
-      <div className="absolute top-0 right-0 m-4">
-        <button onClick={onClose} className="text-white text-2xl">
-          <IoClose />
-        </button>
-      </div>
     </div>
   );
 }
